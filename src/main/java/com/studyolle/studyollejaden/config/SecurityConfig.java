@@ -21,6 +21,10 @@ public class SecurityConfig {
                         "email-login", "/check-email-login", "/login-link").permitAll()
                 .requestMatchers(HttpMethod.GET, "/profile/*").permitAll()
                 .anyRequest().authenticated();
+
+        http.securityContext()
+                .requireExplicitSave(false);
+
         return http.build();
     }
 
