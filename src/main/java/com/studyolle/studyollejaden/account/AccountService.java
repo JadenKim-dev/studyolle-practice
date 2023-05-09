@@ -56,7 +56,7 @@ public class AccountService {
         // 비밀번호가 인코딩된 상태로 Account에 저장되기 때문에 이를 사용할 수 없어서 context.setAuthentication 하는 것으로 구현
         // (이메일 검증 상황에서는 plain password에 접근할 수 있는 방법이 없음)
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                account.getNickname(),
+                new UserAccount(account),
                 account.getPassword(),
                 List.of(new SimpleGrantedAuthority("ROLE_USER"))
         );
